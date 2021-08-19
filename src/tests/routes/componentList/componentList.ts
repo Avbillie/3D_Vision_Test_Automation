@@ -7,7 +7,7 @@ import {
   } from "selenium-webdriver";
 import { SharedMethods } from "../../../shared/classes/sharedMethods";
   
-  export class HomePage extends SharedMethods {
+  export class ComponentListPage extends SharedMethods {
     driver: WebDriver;
     url: string = "https://www.3dvisionllc.com/";
   

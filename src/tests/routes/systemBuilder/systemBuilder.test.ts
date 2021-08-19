@@ -5,11 +5,11 @@ import {
     until,
     By,
   } from "selenium-webdriver";
-import { SharedMethods } from "../../shared/classes/sharedMethods";
+import { SharedMethods } from "../../../shared/classes/sharedMethods";
   
-  export class AboutPage extends SharedMethods {
+  export class SystemBuilderPage extends SharedMethods {
     driver: WebDriver;
-    url: string = "https://www.3dvisionllc.com/about";
+    url: string = "https://www.3dvisionllc.com/portfolio-services";
   
     constructor(driver: WebDriver) {
       super(driver)

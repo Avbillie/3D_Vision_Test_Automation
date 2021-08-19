@@ -5,19 +5,19 @@ import {
     until,
     By,
   } from "selenium-webdriver";
-  import { PortNServices} from "./portfolio&servicesPageClass";
+  import { LoginPage} from "./login";
   const chromedriver = require("chromedriver");
   const driver: WebDriver = new Builder()
     .withCapabilities(Capabilities.chrome())
     .build();
-  const ps = new PortNServices(driver);
+  const ap = new LoginPage(driver);
   
-  describe("Portfolio and services page functionality", () => {
+  describe("Login page functionality, () => {
     beforeEach(async () => {
-      await ps.navigate(ps.url);
+      await ap.navigate(ap.url);
     });
     afterAll(async () => {
-      await ps.quit();
+      await ap.quit();
     });
   
   });
