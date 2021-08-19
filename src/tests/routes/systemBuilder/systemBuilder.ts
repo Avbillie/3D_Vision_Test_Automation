@@ -5,19 +5,19 @@ import {
     until,
     By,
   } from "selenium-webdriver";
-  import { AboutPage } from "./aboutPageClass";
+import { SystemBuilderPage } from "./systemBuilder.test";
   const chromedriver = require("chromedriver");
   const driver: WebDriver = new Builder()
     .withCapabilities(Capabilities.chrome())
     .build();
-  const ap = new AboutPage(driver);
+  const ps = new SystemBuilderPage(driver);
   
-  describe("About page functionality", () => {
+  describe("System builder functionality", () => {
     beforeEach(async () => {
-      await ap.navigate(ap.url);
+      await ps.navigate(ps.url);
     });
     afterAll(async () => {
-      await ap.quit();
+      await ps.quit();
     });
   
   });
