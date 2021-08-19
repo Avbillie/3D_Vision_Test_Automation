@@ -5,7 +5,7 @@ import {
     until,
     By,
   } from "selenium-webdriver";
-import { SharedMethods } from "../../../shared/classes/sharedMethods";
+import { SharedMethods } from "../../shared/classes/sharedMethods";
   
   export class SystemBuilderPage extends SharedMethods {
     driver: WebDriver;
