@@ -5,7 +5,7 @@ import {
     until,
     By,
   } from "selenium-webdriver";
-  import { HomePage } from "./homePage";
+  import { HomePage } from "./homepageClass";
   const chromedriver = require("chromedriver");
   const driver: WebDriver = new Builder()
     .withCapabilities(Capabilities.chrome())
@@ -13,27 +13,26 @@ import {
   const hp = new HomePage(driver);
   
   describe("Home page functionality", () => {
-    beforeAll(async () => {
-      await hp.navigate(hp.url)
-      await driver.sleep(1000)
+    beforeEach(async () => {
+      await hp.navigateToHomePage()
+      await driver.sleep(3000)
     });
 
-    test('Navigated to user login page', async()=>{
-      await hp.navigateToLoginPage()
-      await driver.sleep(1000)
-      expect(await driver.getCurrentUrl()).toContain('/accounts/login/')
+    test('Navigated to user sign in page', async()=>{
+      await hp.navigateToSignInPage()
+      await driver.sleep(3000)
+      let text = await hp.viewInnerText(hp.titleName)
+      expect(text).toBe('Sign In')
+      await hp.navigateToHomePage()
     })
-    
-    test('Returned to home page', async()=>{
-      await hp.returnToHomePage()
+
+    test('Navigated to "custom pc builder" page', async()=>{
+      await hp.click(hp.hamburgerMenu)
       await driver.sleep(1000)
-      expect(await driver.getCurrentUrl()).toBe('https://pcpartpicker.com/')
-    })
-    
-    test('Navigated to system builder page', async()=>{
-      await hp.navigateToSystemBuilderPage()
-      await driver.sleep(1000)
-      expect(await driver.getCurrentUrl()).toContain('/list/')
+      await hp.click(hp.buildYourPcBtn)
+      await driver.sleep(3000)
+      await hp.click(hp.startPcBuilderBtn)
+      expect(driver.getCurrentUrl()).toContain('custom-pc-builder')
     })
     afterAll(async () => {
       await hp.quit();
