@@ -21,7 +21,7 @@ export class SharedMethods {
   async navigate(url) {
     await this.driver.manage().window().maximize();
     await this.driver.get(url);
-    await this.driver.sleep(5000);
+    await this.driver.sleep(2000);
   }
 
   async navigateToHomePage() {
@@ -61,6 +61,15 @@ export class SharedMethods {
   async viewInnerText(elementBy: any) {
     await this.driver.wait(until.elementLocated(elementBy));
     return (await this.driver.findElement(elementBy)).getText();
+  }
+
+  async canView(elementBy: any){
+    if (await this.driver.wait(until.elementIsVisible(await this.driver.findElement(elementBy)))){
+      return true
+    }else{
+      return false
+    }
+    
   }
 
   async returnToHomePage() {
