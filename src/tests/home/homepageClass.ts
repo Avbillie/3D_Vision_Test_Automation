@@ -5,7 +5,8 @@ import {
   until,
   By,
 } from "selenium-webdriver";
-import { SharedMethods } from "../../../shared/classes/sharedMethods";
+import { SharedMethods } from "../../shared/classes/sharedMethods";
+
 
 export class HomePage extends SharedMethods {
   // Login button
